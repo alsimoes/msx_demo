@@ -1,25 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-    int *arr;
-    int tamanho = 5;
+typedef struct {
+    int id;
+    char nome[50];
+} Pessoa;
 
-    // Alocando memória para um array de 5 inteiros
-    arr = (int *)malloc(tamanho * sizeof(int));
-    if (arr == NULL) {
+int main() {
+    Pessoa *p;
+
+    // Alocando memória para uma estrutura Pessoa
+    p = (Pessoa *)malloc(sizeof(Pessoa));
+    if (p == NULL) {
         printf("Erro ao alocar memória.\n");
         return 1;
     }
 
-    // Inicializando e imprimindo os valores
-    for (int i = 0; i < tamanho; i++) {
-        arr[i] = i * 10;
-        printf("arr[%d] = %d\n", i, arr[i]);
-    }
+    // Inicializando os membros da estrutura
+    p->id = 1;
+    snprintf(p->nome, sizeof(p->nome), "João");
+
+    // Acessando os membros da estrutura
+    printf("ID: %d\n", p->id);
+    printf("Nome: %s\n", p->nome);
 
     // Liberando a memória alocada
-    free(arr);
+    free(p);
 
     return 0;
 }
