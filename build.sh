@@ -9,7 +9,7 @@
 clear
 
 if type -P node; then
-	node ../../engine/script/js/build.js target=$1
+	node C:/dev/c/msx-demo/MSXgl/engine/script/js/build.js target=$1
 else
-	../../tools/build/Node/node ../../engine/script/js/build.js target=$1
+	C:/dev/c/msx-demo/MSXgl/tools/build/Node/node C:/dev/c/msx-demo/MSXgl/engine/script/js/build.js target=$1
 fi

@@ -1,31 +1,58 @@
-#include <stdio.h>
-#include <stdlib.h>
+// ____________________________
+// ██▀▀█▀▀██▀▀▀▀▀▀▀█▀▀█        │   ▄▄▄                ▄▄
+// ██  ▀  █▄  ▀██▄ ▀ ▄█ ▄▀▀ █  │  ▀█▄  ▄▀██ ▄█▄█ ██▀▄ ██  ▄███
+// █  █ █  ▀▀  ▄█  █  █ ▀▄█ █▄ │  ▄▄█▀ ▀▄██ ██ █ ██▀  ▀█▄ ▀█▄▄
+// ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀────────┘                 ▀▀
+//  Program template
+//─────────────────────────────────────────────────────────────────────────────
 
-typedef struct {
-    int id;
-    char nome[50];
-} Pessoa;
+//=============================================================================
+// INCLUDES
+//=============================================================================
+#include "msxgl.h"
 
-int main() {
-    Pessoa *p;
+//=============================================================================
+// DEFINES
+//=============================================================================
 
-    // Alocando memória para uma estrutura Pessoa
-    p = (Pessoa *)malloc(sizeof(Pessoa));
-    if (p == NULL) {
-        printf("Erro ao alocar memória.\n");
-        return 1;
+// Library's logo
+#define MSX_GL "\x01\x02\x03\x04\x05\x06"
+
+//=============================================================================
+// READ-ONLY DATA
+//=============================================================================
+
+// Fonts data
+#include "font/font_mgl_sample6.h"
+
+// Animation characters
+const u8 g_ChrAnim[] = { '-', '/', '|', '\\' };
+
+//=============================================================================
+// MAIN LOOP
+//=============================================================================
+
+//-----------------------------------------------------------------------------
+/// Program entry point
+void main()
+{
+    VDP_SetMode(VDP_MODE_SCREEN5);
+    VDP_SetColor(COLOR_BLACK);
+    VDP_EnableVBlank(TRUE);
+    VDP_ClearVRAM();
+
+    Print_SetBitmapFont(g_Font_MGL_Sample6);
+    Print_SetColor(COLOR_WHITE, COLOR_BLACK);
+    Print_SetPosition(0, 0);
+    Print_DrawText(MSX_GL" A Biblioteca de Jogos para MSX! ");
+
+    u8 count = 0;
+    while(!Keyboard_IsKeyPressed(KEY_ESC))
+    {
+        Halt(); // Wait V-Blank
+        Print_SetPosition(255-8, 0);
+        Print_DrawChar(g_ChrAnim[count++ % 4]);
     }
 
-    // Inicializando os membros da estrutura
-    p->id = 1;
-    snprintf(p->nome, sizeof(p->nome), "João");
-
-    // Acessando os membros da estrutura
-    printf("ID: %d\n", p->id);
-    printf("Nome: %s\n", p->nome);
-
-    // Liberando a memória alocada
-    free(p);
-
-    return 0;
+    Bios_Exit(0);
 }
