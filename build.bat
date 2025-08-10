@@ -10,3 +10,6 @@
 cls
 
 MSXgl\tools\build\Node\node.exe MSXgl\engine\script\js\build.js target=%1
+
+echo "Running the cartridge on OpenMSX..."
+start "" openmsx -carta emul\rom\main.rom

@@ -43,7 +43,7 @@
 //*****************************************************************************
 
 //-- Project name (string). Will be use for output filename
-ProjName = "template";
+ProjName = "main";
 
 //-- List of project modules to build (array). If empty, ProjName will be added
 ProjModules = [ ProjName ];
@@ -52,7 +52,7 @@ ProjModules = [ ProjName ];
 // ProjSegments = ProjName;
 
 //-- List of library modules to build (array)
-LibModules = [ "system", "bios", "vdp", "print", "input", "memory" ];
+LibModules = [ "system", "bios", "vdp", "print", "input", "memory", "tile", "game_pawn" ];
 
 //-- Additional sources to be compiled and linked with the project (array)
 // AddSources = [];
@@ -68,7 +68,7 @@ LibModules = [ "system", "bios", "vdp", "print", "input", "memory" ];
 //   - 0        MSX0
 //   - TR       MSX turbo R
 //   - 3        MSX3 (reserved)
-Machine = "2";
+Machine = "12";
 
 //-- Target program format (string)
 //   - BIN              .bin    BASIC binary program (starting at 8000h)

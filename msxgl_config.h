@@ -288,7 +288,7 @@
 // - GAMEPAWN_TILEMAP_SRC_RAM ..... Tilemap located in a buffer in RAM (best for performance)
 // - GAMEPAWN_TILEMAP_SRC_VRAM .... Tilemap located in VRAM (slow but don't need additionnal data)
 // - GAMEPAWN_TILEMAP_SRC_V9 ...... Tilemap located in V9990's VRAM
-#define GAMEPAWN_TILEMAP_SRC		GAMEPAWN_TILEMAP_SRC_VRAM
+#define GAMEPAWN_TILEMAP_SRC		GAMEPAWN_TILEMAP_SRC_RAM
 // Pawn's sprite mode
 // - GAMEPAWN_SPT_MODE_AUTO ....... Backward compatibility option
 // - GAMEPAWN_SPT_MODE_MSX1 ....... Sprite Mode 1 (MSX1 screens)
